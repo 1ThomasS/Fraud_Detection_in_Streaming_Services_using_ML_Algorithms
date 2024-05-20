@@ -1,0 +1,20 @@
+[2024-05-16T18:34:02.463+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-05-16T18:34:02.479+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: fetch_and_store_data.fetch_data scheduled__2024-05-16T18:30:00+00:00 [queued]>
+[2024-05-16T18:34:02.483+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: fetch_and_store_data.fetch_data scheduled__2024-05-16T18:30:00+00:00 [queued]>
+[2024-05-16T18:34:02.484+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-05-16T18:34:02.491+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): fetch_data> on 2024-05-16 18:30:00+00:00
+[2024-05-16T18:34:02.500+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=278) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-05-16T18:34:02.502+0000] {standard_task_runner.py:63} INFO - Started process 282 to run task
+[2024-05-16T18:34:02.501+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'fetch_and_store_data', 'fetch_data', 'scheduled__2024-05-16T18:30:00+00:00', '--job-id', '18', '--raw', '--subdir', 'DAGS_FOLDER/fetch_and_store_data.py', '--cfg-path', '/tmp/tmpqpzdddtr']
+[2024-05-16T18:34:02.505+0000] {standard_task_runner.py:91} INFO - Job 18: Subtask fetch_data
+[2024-05-16T18:34:02.551+0000] {task_command.py:426} INFO - Running <TaskInstance: fetch_and_store_data.fetch_data scheduled__2024-05-16T18:30:00+00:00 [running]> on host 523a7de3ce3b
+[2024-05-16T18:34:02.622+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='fetch_and_store_data' AIRFLOW_CTX_TASK_ID='fetch_data' AIRFLOW_CTX_EXECUTION_DATE='2024-05-16T18:30:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-05-16T18:30:00+00:00'
+[2024-05-16T18:34:02.629+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-05-16T18:34:03.260+0000] {python.py:237} INFO - Done. Returned value was: {'gender': 'male', 'name': {'title': 'Mr', 'first': 'Bertoldo', 'last': 'Silveira'}, 'location': {'street': {'number': 8688, 'name': 'Rua Dezenove de Outubro'}, 'city': 'Santana de Parnaíba', 'state': 'Ceará', 'country': 'Brazil', 'postcode': 96543, 'coordinates': {'latitude': '-76.7734', 'longitude': '-171.1887'}, 'timezone': {'offset': '+8:00', 'description': 'Beijing, Perth, Singapore, Hong Kong'}}, 'email': 'bertoldo.silveira@example.com', 'login': {'uuid': '2fdd3c3f-494a-41c6-997f-a0221eb04ea6', 'username': 'heavyzebra718', 'password': '***', 'salt': 'rLrOgXxJ', 'md5': 'e4170d524f17e36328a252745e2c33e7', 'sha1': 'eefb0dbc642e9edda2a32ea7af2c2014b5b12f0a', 'sha256': '53fff0491ccdd4f8c9450fdc82c07ca7b93b094b24e6944ddae65904a9b04886'}, 'dob': {'date': '1945-08-11T12:00:59.350Z', 'age': 78}, 'registered': {'date': '2005-03-10T02:27:44.093Z', 'age': 19}, 'phone': '(19) 7039-6424', 'cell': '(51) 1691-2254', 'id': {'name': 'CPF', 'value': '499.489.508-43'}, 'picture': {'large': 'https://randomuser.me/api/portraits/men/17.jpg', 'medium': 'https://randomuser.me/api/portraits/med/men/17.jpg', 'thumbnail': 'https://randomuser.me/api/portraits/thumb/men/17.jpg'}, 'nat': 'BR'}
+[2024-05-16T18:34:03.262+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-05-16T18:34:03.291+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=fetch_and_store_data, task_id=fetch_data, run_id=scheduled__2024-05-16T18:30:00+00:00, execution_date=20240516T183000, start_date=20240516T183402, end_date=20240516T183403
+[2024-05-16T18:34:03.306+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-05-16T18:34:03.328+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-05-16T18:34:03.329+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
