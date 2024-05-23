@@ -54,8 +54,8 @@ x-airflow-common:
   environment:
     &airflow-common-env
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
-    AIRFLOW__CORE__SQL_ALCHEMY_CONN: mysql+mysqlconnector://airflow:airflow@mysql/airflow
-    AIRFLOW__CELERY__RESULT_BACKEND: db+mysql://airflow:airflow@mysql/airflow
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+    AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://airflow:airflow@postgres/airflow
     AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
     AIRFLOW__CORE__FERNET_KEY: ''
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
@@ -82,28 +82,23 @@ x-airflow-common:
     &airflow-common-depends-on
     redis:
       condition: service_healthy
-    mysql:
+    postgres:
       condition: service_healthy
 
 
 version: '3.8'
 services:
-  mysql:
-    image: mysql:5.7  # or use mysql:8.0, depending on your needs
-    platform: linux/amd64
+  postgres:
+    image: postgres:13
     environment:
-      MYSQL_ROOT_PASSWORD: airflow
-      MYSQL_DATABASE: airflow
-      MYSQL_USER: airflow
-      MYSQL_PASSWORD: airflow
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
     volumes:
-      - mysql-db-volume:/var/lib/mysql
-    ports:
-      - "3306:3306"
+      - postgres-db-volume:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ["CMD", "pg_isready", "-U", "airflow"]
       interval: 10s
-      timeout: 5s
       retries: 5
       start_period: 30s
     restart: always
@@ -344,9 +339,12 @@ services:
     container_name: debezium
     hostname: debezium
     depends_on:
-      mysql:
+      postgres:
         condition: service_healthy
       broker:
+
+
+
         condition: service_healthy
     ports:
       - '8083:8083'
@@ -414,5 +412,5 @@ services:
     - ./grafana/provisioning/:/etc/grafana/provisioning/
 
 volumes:
-  mysql-db-volume:
+  postgres-db-volume:
     driver: local

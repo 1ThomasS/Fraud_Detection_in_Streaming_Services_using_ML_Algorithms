@@ -1,0 +1,14 @@
+[2024-05-23T03:05:36.588+0000] {processor.py:161} INFO - Started process (PID=31) to work on /opt/airflow/dags/fetch_and_store_data.py
+[2024-05-23T03:05:36.596+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/fetch_and_store_data.py for tasks to queue
+[2024-05-23T03:05:36.614+0000] {logging_mixin.py:188} INFO - [2024-05-23T03:05:36.613+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/fetch_and_store_data.py
+[2024-05-23T03:05:36.977+0000] {processor.py:840} INFO - DAG(s) 'fetch_and_store_data' retrieved from /opt/airflow/dags/fetch_and_store_data.py
+[2024-05-23T03:05:37.342+0000] {logging_mixin.py:188} INFO - [2024-05-23T03:05:37.341+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-23T03:05:37.366+0000] {logging_mixin.py:188} INFO - [2024-05-23T03:05:37.366+0000] {dag.py:3954} INFO - Setting next_dagrun for fetch_and_store_data to 2024-05-23 03:00:00+00:00, run_after=2024-05-23 03:03:00+00:00
+[2024-05-23T03:05:37.428+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/fetch_and_store_data.py took 0.896 seconds
+[2024-05-23T03:06:10.087+0000] {processor.py:161} INFO - Started process (PID=91) to work on /opt/airflow/dags/fetch_and_store_data.py
+[2024-05-23T03:06:10.091+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/fetch_and_store_data.py for tasks to queue
+[2024-05-23T03:06:10.105+0000] {logging_mixin.py:188} INFO - [2024-05-23T03:06:10.104+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/fetch_and_store_data.py
+[2024-05-23T03:06:10.351+0000] {processor.py:840} INFO - DAG(s) 'fetch_and_store_data' retrieved from /opt/airflow/dags/fetch_and_store_data.py
+[2024-05-23T03:06:10.385+0000] {logging_mixin.py:188} INFO - [2024-05-23T03:06:10.385+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-23T03:06:10.447+0000] {logging_mixin.py:188} INFO - [2024-05-23T03:06:10.447+0000] {dag.py:3954} INFO - Setting next_dagrun for fetch_and_store_data to 2024-05-23 03:03:00+00:00, run_after=2024-05-23 03:06:00+00:00
+[2024-05-23T03:06:10.491+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/fetch_and_store_data.py took 0.457 seconds

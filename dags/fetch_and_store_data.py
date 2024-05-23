@@ -3,7 +3,7 @@ import requests
 import psycopg2
 from airflow.models import DAG
 from airflow.operators.python_operator import PythonOperator
-from airflow.hooks.mysql_hook import MySqlHook
+from airflow.hooks.postgres_hook import PostgresHook
 
 
 default_args = {
@@ -32,16 +32,13 @@ def fetch_data():
 
 
 def store_data(**kwargs):
-    ti = kwargs['ti']
-    user_data = ti.xcom_pull(task_ids='fetch_data')
-
-    mysql_hook = MySqlHook(mysql_conn_id='mysql_fraud_detection')
-    connection = mysql_hook.get_conn()
+    pg_hook = PostgresHook(postgres_conn_id='fraud_detection_pg')
+    connection = pg_hook.get_conn()
     cursor = connection.cursor()
-
-    insert_query = """INSERT INTO users (name, email, location) VALUES (%s, %s, %s);"""
+    user_data = ti.xcom_pull(key='user_data', task_ids='fetch_data')
+    insert_query = """INSERT INTO users (name, email, location) VALUES (%s, %s, %s)"""
     cursor.execute(insert_query, (user_data['name']['first'], user_data['email'], user_data['location']['city']))
-    connection.commit()
+    conn.commit()
     cursor.close()
     connection.close()
 
